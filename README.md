@@ -30,6 +30,7 @@ In general, the steps of regression machine learning are:
 * Define categorical and numerical variables
 
      In this step, I tried to split the variables based on it's data types. If data types of variables is string will be saved in list called **cat_cols** and if data types of variables is integer or double will be saved in list called **num_cols**. This split applied on data train and data test. This step applied to make easier in the following step so I don't need to define categorical and numerical variables manually. Pictures below is example of code of define categorical and numerical variables in data train. 
+     
     ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/compare_categorical_variables.png)
     ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/compare_categorical_variables2.png)
     
@@ -66,12 +67,12 @@ In general, the steps of regression machine learning are:
 * EDA
 
    Create distribution visualization in each variables to get some insight of dataset. Pictures below are example of visualization of data train.
-   ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/EDA1.png)
-   ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/EDA2.png)
-   ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/EDA3.png)
-   ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/EDA4.png)
-   ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/EDA5.png)
-   ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/EDA6.png)
+    ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/EDA1.png)
+    ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/EDA2.png)
+    ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/EDA3.png)
+    ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/EDA4.png)
+    ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/EDA5.png)
+    ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/EDA6.png)
    
    
 * Handle insignificant categories in data train
