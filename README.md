@@ -175,7 +175,7 @@ In general, the steps of regression machine learning are:
     After all the steps above are executed, now we know which one model that has best evaluation. And that is the perfect model to make prediction our data test. We can choose the top one or two model from four model above then transform that model to data test. In this case, I choose Random Forest with hyper parameter tuning to make prediction. Then save the prediction into csv file.
     ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/implementasi_to_data_test.png)
     
-    **YEAYYYY!!! we got a prediction.**
+    **YEAYYYY!!! we got our prediction.**
     
     For more details please see my code.
     
