@@ -1,37 +1,37 @@
 # Regression-Pyspark
-This repository of regression template using pyspark.
+This is a repository of regression template using pyspark.
 
-I tried to make a template of regression in machine learning using pyspark.  Generally, the steps of regression are same with the steps of classification from load data, data cleansing and making a prediction. But the differences are the libraries, models and data that are used.
+I tried to make a template of regression machine learning using pyspark.  Generally, the steps of regression are same with the steps of classification from load data, data cleansing and making a prediction. But the differences are the libraries, models and data that are used.
 
 I use functions that I've created in classification to make an automatization, so users just need to update or replace the dataset. 
 
-To test my template, I used data Home_Quote_Conversion from Kaggle https://www.kaggle.com/c/house-prices-advanced-regression-techniques. This dataset represent the factors are impacted in determining sales prices, like location, materials are used, numbers of room, kitchen, years and atc. And the task is to predict sales prices.
+To test my template, I used data House Prices from Kaggle https://www.kaggle.com/c/house-prices-advanced-regression-techniques. This dataset represent the factors are impacted in determining sales prices of house, like location, materials are used, numbers of room, kitchen, years and etc. And the task is to predict sales prices of house.
 
-In general, the steps of classification in machine learning are:
+In general, the steps of regression machine learning are:
 
 * Load libraries
 
-  The first step in applying regression model is we have to load all libraries are needed. The basic libraries for regression are LinearRegression, DecisionTreeRegressor, RandomForestRegressor, GBTRegressor, etc. Below the capture of all libraries are needed: 
+    The first step in applying regression model is we have to load all libraries are needed. The basic libraries for regression are LinearRegression, DecisionTreeRegressor, RandomForestRegressor, GBTRegressor, etc. Below the capture of all libraries are needed in regression: 
   ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/load_libraries.png)
   
  
 * Load Data into Spark Dataframe
 
-    Because we will work on spark environment so the dataset must be in spark dataframe. In this step, I created function to load data into spark dataframe. To run this function, first we have to define type of file of dataset (text or parquet) and path where dataset is stored and delimeter ',' or other. 
+    Because we will work on spark environment so the dataset must be in spark dataframe. In this step, I created function to load data into spark dataframe. To run this function, first we have to define type of file of dataset (text or parquet) and path where dataset is stored and delimeter like ',' for example or other. 
     ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/load_data_function.png)
     
     
 * Check the data
 
-    After load data, lets do some check of the dataset such as numbers of columns, numbers of observations, names of columns, type of columns, etc. In this part, we also do some changes like rename columns name if the column name too long, change the data type if data type not in accordance or drop unnecessary column and check the proportion of target. Those changes apply in both data train and data test. 
+    After load data, lets do some check of the dataset such as numbers of columns, numbers of observations, names of columns, type of columns, etc. In this part, we also do some changes like rename columns name if the column name too long, change the data type if data type not in accordance or drop unnecessary column. Those changes apply in both data train and data test. 
     ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/check_data.png)
 
 
 * Define categorical and numerical variables
 
-     In this step, I tried to split the variables based on it's data types. If data types of variables is string will be saved in list called **cat_cols** and if data types of variables is integer or double will be saved in list called **num_cols**. This split applied on data train and data test. This step applied to make easier in the following step so I don't need to define categorical and numerical variables manually. This part also apply in both data train and data test. Pictures below is example of code of define categorical and numerical variables in data train. 
+     In this step, I tried to split the variables based on it's data types. If data types of variables is string will be saved in list called **cat_cols** and if data types of variables is integer or double will be saved in list called **num_cols**. This split applied on data train and data test. This step applied to make easier in the following step so I don't need to define categorical and numerical variables manually. Pictures below is example of code of define categorical and numerical variables in data train. 
     ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/compare_categorical_variables.png)
-    ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/compare_categorical_variables2.png
+    ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/compare_categorical_variables2.png)
     
     
 * Sample data
@@ -76,9 +76,9 @@ In general, the steps of classification in machine learning are:
    
 * Handle insignificant categories in data train
   
-   Sometimes there are categories with fewest amount, those categories I called insignificant categories. Those insignificant categories will be replaced with the largest numbers of catories in each categorical columns. Sometimes this replacing will make better modelling.
+   Sometimes there are categories with fewest amount, those categories I called insignificant categories. Those insignificant categories will be replaced with the largest numbers of categories in each categorical columns. Sometimes this replacing will make better modelling.
 
-  Note: the determination of threshold that category have very few amount is based on trial n error. In this case I used threshold 98% for maximum amount and 0.7% for minimum amount. Each categories in a column that have percentage under 0.7% will be replaced with category that has percentage equal or lower than 97%. 
+  Note: the determination of threshold that category have fewest amount is based on trial n error. In this case I used threshold 98% for maximum amount and 0.7% for minimum amount. Each categories in each column that have percentage under 0.7% will be replaced with category that has percentage equal or lower than 97%. 
     ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/insignificant_categories.png)
     ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/insignificant_categories2.png)
     
@@ -92,7 +92,8 @@ In general, the steps of classification in machine learning are:
 * Handle outlier.
    
    Outlier is observations that fall below lower side or above upper side.
-   To handle outlier we approach by replacing the value greater than upper side with upper side value and replacing the value lower than lower side with lower side value. So, we need calculate upper and lower side from quantile value, quantile is probability distribution of variable. In General, there are three quantile:
+   
+   To handle outlier the approach is by replacing the value greater than upper side with upper side value and replacing the value lower than lower side with lower side value. So, we need calculate upper and lower side from quantile value, quantile is probability distribution of variable. In General, there are three quantile:
 
    - Q1 = the value that cut off 25% of the first data when it is sorted in ascending order.
    - Q2 = cut off data, or median, it's 50 % of the data
@@ -116,7 +117,7 @@ In general, the steps of classification in machine learning are:
   - One-hot Encoding, which is mapping the label column (string label) on the binary column.
   - Vector assembler, which is mapping all columns in vector.
   
-    In this step, first I check the distinct values in each categorical columns between data train and data test. If data train has distinct values more than data test in one or more categorical column, data train and data test will be joined then apply feature engineering on that data combination - this merger is needed to avoid error in modelling due to differences length of vector between data train and data test- length of vector (result of feature engineering of data combination) must be same between data train and data test so we can move to the next step, modelling and prediction. But if distinct values between data train and data test same, we will apply feature angineering on data train and data test separately then move to the next step modelling and prediction.
+    In this step, first I checked the distinct values in each categorical columns between data train and data test. If data train has distinct values more than data test in one or more categorical column, data train and data test will be joined then apply feature engineering on that data combination - this merger is needed to avoid error in modelling due to differences length of vector between data train and data test- length of vector (result of feature engineering of data combination) must be same between data train and data test so we can move to the next step, modelling and prediction. But if distinct values between data train and data test same, we will apply feature angineering on data train and data test separately then move to the next step modelling and prediction.
     ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/feature_engineering.png)
     ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/feature_engineering2.png)
     ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/feature_engineering3.png)
@@ -132,7 +133,7 @@ In general, the steps of classification in machine learning are:
   
     We will use four algorithm to make a model and prediction, they are:
 
-    - Linear Regression Linear regression used logit function in prediction the probability.
+    - Linear Regression Linear regression used regression equation in prediction the probability.
     - Decision Tree This algorithm will find the most significant independent variable to create a values.
     - Random Forest This algorithm build multiple decision trees and merges them together and use bagging method.
     - Gradient Boosting This algorithm use boosting ensemble technic. This technique employs the logic in which the subsequent predictors learn from the mistakes of the previous predictors.
@@ -170,7 +171,7 @@ In general, the steps of classification in machine learning are:
     
 * Implementation Modelling to data test.
   
-    After all the steps above are executed, now we know which one model that has best evaluation. And that is the perfect model to make prediction our data test. We can choose the top one or two model from four model then transform that model to our data test. In this case, I choose Random Forest with hyper parameter tuning to make prediction. Then save the prediction into csv file.
+    After all the steps above are executed, now we know which one model that has best evaluation. And that is the perfect model to make prediction our data test. We can choose the top one or two model from four model above then transform that model to data test. In this case, I choose Random Forest with hyper parameter tuning to make prediction. Then save the prediction into csv file.
     ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/implementasi_to_data_test.png)
     
     **YEAYYYY!!! we got a prediction.**
