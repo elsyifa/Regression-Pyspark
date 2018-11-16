@@ -46,6 +46,8 @@ In general, the steps of regression machine learning are:
 
      - Using pandas dataframe,
      - Using pyspark dataframe. But the prefer method is method using pyspark dataframe so if dataset is too large we can still calculate / check missing values. Both data train and data test has to apply this step. Pictures below are example check missing values using pyspark dataframe in data train. 
+     This function refer to https://github.com/UrbanInstitute/pyspark-tutorials/blob/master/04_missing-data.ipynb.
+     
     ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/chec_missing_values.png)
     ![alt text](https://github.com/elsyifa/Regression-Pyspark/blob/master/Images/chec_missing_values2.png)
     
