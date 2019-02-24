@@ -3,7 +3,7 @@ This is a repository of regression template using pyspark.
 
 I tried to make a template of regression machine learning using pyspark.  Generally, the steps of regression are same with the steps of classification from load data, data cleansing and making a prediction. But the differences are the libraries, models and data that are used.
 
-I use functions that I've created in classification to make an automatization, so users just need to update or replace the dataset. 
+I use functions that I've created in classification to make an automation, so users just need to update or replace the dataset. 
 
 To test my template, I used data House Prices from Kaggle https://www.kaggle.com/c/house-prices-advanced-regression-techniques. This dataset represent the factors are impacted in determining sales prices of house, like location, materials are used, numbers of room, kitchen, years and etc. And the task is to predict sales prices of house.
 
